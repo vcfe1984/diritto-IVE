@@ -1,7 +1,7 @@
 {
   "title": "Diritto Proprio IVE",
-  "version": "it-1.1",
-  "built": "2026-10-29",
+  "version": "it-1.3",
+  "built": "2026-10-30",
   "groups": [
     {
       "id": "fund",
@@ -51,7 +51,7 @@
       "title": "Costituzioni",
       "short": "Const.",
       "edition": "2009",
-      "words": 31873,
+      "words": 31457,
       "articles": 380,
       "notes": 357,
       "images": []
@@ -61,9 +61,9 @@
       "title": "Direttorio di Spiritualità",
       "short": "Spiritualità",
       "edition": "2009",
-      "words": 31706,
+      "words": 31224,
       "articles": 325,
-      "notes": 430,
+      "notes": 429,
       "images": []
     },
     {
@@ -71,7 +71,7 @@
       "title": "Direttorio di Vita Consacrata",
       "short": "Vita Consacrata",
       "edition": "2015",
-      "words": 31781,
+      "words": 31274,
       "articles": 411,
       "notes": 537,
       "images": []
@@ -81,9 +81,9 @@
       "title": "Direttorio di Vita Liturgica",
       "short": "Vita Liturgica",
       "edition": "2015",
-      "words": 8052,
+      "words": 7922,
       "articles": 122,
-      "notes": 147,
+      "notes": 148,
       "images": []
     },
     {
@@ -91,7 +91,7 @@
       "title": "Direttorio di Formazione Intellettuale",
       "short": "Formazione Intellettuale",
       "edition": "2015",
-      "words": 9585,
+      "words": 9502,
       "articles": 91,
       "notes": 101,
       "images": []
@@ -101,7 +101,7 @@
       "title": "Direttorio di Oratorio",
       "short": "Oratorio",
       "edition": "2015",
-      "words": 13040,
+      "words": 12949,
       "articles": 62,
       "notes": 106,
       "images": []
@@ -111,7 +111,7 @@
       "title": "Direttorio degli Esercizi Spirituali",
       "short": "Esercizi Spirituali",
       "edition": "2015",
-      "words": 37699,
+      "words": 37511,
       "articles": 172,
       "notes": 79,
       "images": []
@@ -121,7 +121,7 @@
       "title": "Direttorio delle Vocazioni",
       "short": "Vocazioni",
       "edition": "2016",
-      "words": 11054,
+      "words": 10943,
       "articles": 95,
       "notes": 108,
       "images": []
@@ -131,9 +131,9 @@
       "title": "Direttorio di Vita Fraterna in comune",
       "short": "Vita Fraterna in comune",
       "edition": "2016",
-      "words": 9020,
+      "words": 8888,
       "articles": 94,
-      "notes": 57,
+      "notes": 80,
       "images": []
     },
     {
@@ -141,9 +141,9 @@
       "title": "Direttorio di Seminari Maggiori",
       "short": "Seminari Maggiori",
       "edition": "2016",
-      "words": 29363,
+      "words": 28516,
       "articles": 451,
-      "notes": 669,
+      "notes": 723,
       "images": []
     },
     {
@@ -151,9 +151,9 @@
       "title": "Direttorio di Noviziato",
       "short": "Noviziato",
       "edition": "2016",
-      "words": 14843,
+      "words": 14697,
       "articles": 209,
-      "notes": 88,
+      "notes": 91,
       "images": []
     },
     {
@@ -161,9 +161,9 @@
       "title": "Direttorio di Direzione Spirituale",
       "short": "Direzione Spirituale",
       "edition": "2016",
-      "words": 7127,
+      "words": 7065,
       "articles": 80,
-      "notes": 30,
+      "notes": 37,
       "images": []
     },
     {
@@ -171,7 +171,7 @@
       "title": "Direttorio di Catechesi",
       "short": "Catechesi",
       "edition": "Vol. III",
-      "words": 19592,
+      "words": 19444,
       "articles": 92,
       "notes": 95,
       "images": []
@@ -181,7 +181,7 @@
       "title": "Direttorio di Missioni Popolari",
       "short": "Missioni Popolari",
       "edition": "Vol. III",
-      "words": 31216,
+      "words": 30916,
       "articles": 221,
       "notes": 180,
       "images": []
@@ -191,9 +191,9 @@
       "title": "Direttorio di predicazione della Parola di Dio",
       "short": "predicazione della Parola di Dio",
       "edition": "Vol. III",
-      "words": 14085,
+      "words": 14050,
       "articles": 134,
-      "notes": 118,
+      "notes": 111,
       "images": []
     },
     {
@@ -201,9 +201,9 @@
       "title": "Direttorio di Vita Contemplativa",
       "short": "Vita Contemplativa",
       "edition": "Vol. III",
-      "words": 13410,
+      "words": 13309,
       "articles": 225,
-      "notes": 196,
+      "notes": 208,
       "images": []
     },
     {
@@ -211,9 +211,9 @@
       "title": "Direttorio di Evangelizzazione della cultura",
       "short": "Evangelizzazione della cultura",
       "edition": "Vol. III",
-      "words": 28551,
+      "words": 27838,
       "articles": 242,
-      "notes": 188,
+      "notes": 352,
       "images": []
     }
   ]

@@ -1,6 +1,6 @@
 /* Service worker — offline cache + versioned updates.
    VERSION and ASSETS are rewritten by tools/build.py on every build. */
-const VERSION = 'it-4b67f4267774';
+const VERSION = 'it-383b70cbc56f';
 const ASSETS = [
  "./",
  "app.css",
@@ -55,10 +55,6 @@ const ASSETS = [
  "manifest.webmanifest",
  "robots.txt",
  "search-worker.js",
- "sources/costituzioni.pdf",
- "sources/direttori-vol-1.pdf",
- "sources/direttori-vol-2.pdf",
- "sources/direttori-vol-3.pdf",
  "vendor/minisearch.js"
 ];
 const CACHE = 'ive-it-' + VERSION;

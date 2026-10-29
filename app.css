@@ -316,6 +316,14 @@ body.in-doc #progress{display:block}
 .exercise-table { margin: 1.5rem 0 2.5rem; }
 .exercise-table img { width: 100%; height: auto; border: 1px solid #ddd5ca; background: white; cursor: zoom-in; }
 .exercise-table figcaption { font: 12px/1.5 sans-serif; text-align: center; opacity: .7; margin-top: .5rem; }
-.page-notes { margin: .8rem 0 1.6rem; padding: .6rem .8rem; border-left: 2px solid var(--hue, #8E1B2B); font-size: .85em; }
-.page-notes summary { cursor: pointer; font: 12px/1.6 sans-serif; opacity: .75; }
-.page-notes p { margin: .6rem 0 0; text-align: left; }
+/* Shared footnote styling in every document and theme. */
+.doc sup.fn { font-size: .68em; line-height: 0; vertical-align: super; white-space: nowrap; }
+.doc sup.fn a { font-family: var(--sans); font-weight: 600; color: var(--accent); text-decoration: none; padding: 0 .16em; border-radius: 3px; }
+.doc sup.fn a:hover, .doc sup.fn a:focus-visible { background: var(--accent-soft); outline: 1px solid var(--accent); outline-offset: 2px; }
+.page-notes { margin: 1rem 0 1.8rem; padding: .65rem 0 .65rem 1rem; border-left: 2px solid var(--line-2); }
+.page-notes summary { cursor: pointer; font: 600 12px/1.6 var(--sans); letter-spacing: .04em; color: var(--muted); }
+.doc .footnote-list { list-style: none; margin: .75rem 0 0; padding: 0; }
+.doc .footnote-list > li { display: grid; grid-template-columns: 2.5em minmax(0, 1fr); gap: .4em; margin: 0 0 .75em; font-size: .82em; line-height: 1.6; text-align: left; }
+.note-number { font-family: var(--sans); color: var(--accent); font-size: .85em; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; padding-top: .16em; }
+.note-text, .footnote-content { font-family: var(--read-font); font-weight: 400; overflow-wrap: anywhere; }
+.doc .footnote-list > .note-continuation { display: block; padding-left: 2.9em; }

@@ -281,7 +281,7 @@ function setupDocClicks() {
     if (fn) {
       e.preventDefault();
       const d = DOCS.get(view.dataset.doc); const note = d && d.notes[+fn.dataset.fn];
-      if (note != null) openPop(fn, `<div class="p-k">Nota ${esc(fn.textContent)}</div>${note}`);
+      if (note != null) openPop(fn, `<div class="p-k">Nota ${esc(fn.textContent)}</div><div class="footnote-content">${note}</div>`);
       return;
     }
     const img = e.target.closest('.doc img');
