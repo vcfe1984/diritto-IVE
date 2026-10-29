@@ -108,7 +108,6 @@ function showHome() {
     <div class="foot">
       ${LIB.docs.length} documenti · ${totalArts.toLocaleString('it')} numeri · ${totalNotes.toLocaleString('it')} note<br>
       Edizione italiana · versione ${esc(LIB.version)} · ${esc(LIB.built)}<br>
-      <span class="small">Trascrizione digitale dei PDF forniti; per verificare il testo consulta le pagine originali.</span>
     </div>
   </div>`;
   const inp = $('#home-q');
@@ -160,7 +159,7 @@ async function showDoc(id, anchor) {
           <header class="doc-head">
             <div class="overline">${esc(meta.group)}</div>
             <h1 id="doc-h1">${esc(meta.title)}</h1>
-            <div class="meta">${meta.articles ? `<span>${meta.articles} numeri</span>` : ''}<span>${meta.notes} note</span><span>Ed. ${esc(meta.edition || '')}</span><a href="${esc(meta.pdf)}#page=${meta.firstPage}" target="_blank" rel="noopener">Apri PDF originale ↗</a></div>
+            <div class="meta">${meta.articles ? `<span>${meta.articles} numeri</span>` : ''}<span>${meta.notes} note</span><span>Ed. ${esc(meta.edition || '')}</span></div>
           </header>
           ${d.html}
           <div class="doc-end">${ICON.orn.replace('<svg', '<svg style="width:16px;height:16px;margin:0 auto;fill:currentColor"')}</div>

@@ -311,12 +311,11 @@ body.in-doc #progress{display:block}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media print{.topbar,.reader-side,#progress,.doc-nav{display:none}.reader{display:block}.doc .num{position:static}}
 
-/* Italian source references and original exercise tables. */
-.source-page { margin: 2rem 0 .65rem; padding-top: .5rem; border-top: 1px solid var(--line, #ddd5ca); font: 12px/1.5 sans-serif; opacity: .65; scroll-margin-top: 90px; }
-.source-page a { color: inherit; text-decoration: none; }
-.source-table { margin: 1.5rem 0 2.5rem; }
-.source-table img { width: 100%; height: auto; border: 1px solid #ddd5ca; background: white; cursor: zoom-in; }
-.source-table figcaption { font: 12px/1.5 sans-serif; text-align: center; opacity: .7; margin-top: .5rem; }
+/* Reading anchors and exercise tables. */
+.reading-anchor { display: block; height: 0; scroll-margin-top: 90px; }
+.exercise-table { margin: 1.5rem 0 2.5rem; }
+.exercise-table img { width: 100%; height: auto; border: 1px solid #ddd5ca; background: white; cursor: zoom-in; }
+.exercise-table figcaption { font: 12px/1.5 sans-serif; text-align: center; opacity: .7; margin-top: .5rem; }
 .page-notes { margin: .8rem 0 1.6rem; padding: .6rem .8rem; border-left: 2px solid var(--hue, #8E1B2B); font-size: .85em; }
 .page-notes summary { cursor: pointer; font: 12px/1.6 sans-serif; opacity: .75; }
 .page-notes p { margin: .6rem 0 0; text-align: left; }
