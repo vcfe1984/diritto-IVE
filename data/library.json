@@ -1,0 +1,288 @@
+{
+  "title": "Diritto Proprio IVE",
+  "version": "it-1.0",
+  "built": "2026-10-29",
+  "groups": [
+    {
+      "id": "fund",
+      "title": "Testi fondamentali",
+      "docs": [
+        "costituzioni",
+        "spiritualita"
+      ]
+    },
+    {
+      "id": "vida",
+      "title": "Vita religiosa",
+      "docs": [
+        "vita-consacrata",
+        "vita-liturgica",
+        "vita-fraterna",
+        "vita-contemplativa"
+      ]
+    },
+    {
+      "id": "form",
+      "title": "Formazione",
+      "docs": [
+        "formazione-intellettuale",
+        "vocazioni",
+        "seminari-maggiori",
+        "noviziato",
+        "direzione-spirituale"
+      ]
+    },
+    {
+      "id": "apos",
+      "title": "Apostolato",
+      "docs": [
+        "oratorio",
+        "esercizi-spirituali",
+        "catechesi",
+        "missioni-popolari",
+        "predicazione",
+        "evangelizzazione-cultura"
+      ]
+    }
+  ],
+  "docs": [
+    {
+      "id": "costituzioni",
+      "title": "Costituzioni",
+      "short": "Const.",
+      "edition": "2009",
+      "source": "Costituzioni- italiano.pdf",
+      "pdf": "sources/costituzioni.pdf",
+      "words": 31873,
+      "articles": 380,
+      "notes": 357,
+      "images": [],
+      "firstPage": 23,
+      "lastPage": 179
+    },
+    {
+      "id": "spiritualita",
+      "title": "Direttorio di Spiritualità",
+      "short": "Spiritualità",
+      "edition": "2009",
+      "source": "Costituzioni- italiano.pdf",
+      "pdf": "sources/costituzioni.pdf",
+      "words": 31706,
+      "articles": 325,
+      "notes": 430,
+      "images": [],
+      "firstPage": 183,
+      "lastPage": 291
+    },
+    {
+      "id": "vita-consacrata",
+      "title": "Direttorio di Vita Consacrata",
+      "short": "Vita Consacrata",
+      "edition": "2015",
+      "source": "Direttori Vol. 1.pdf",
+      "pdf": "sources/direttori-vol-1.pdf",
+      "words": 31781,
+      "articles": 411,
+      "notes": 537,
+      "images": [],
+      "firstPage": 13,
+      "lastPage": 125
+    },
+    {
+      "id": "vita-liturgica",
+      "title": "Direttorio di Vita Liturgica",
+      "short": "Vita Liturgica",
+      "edition": "2015",
+      "source": "Direttori Vol. 1.pdf",
+      "pdf": "sources/direttori-vol-1.pdf",
+      "words": 8052,
+      "articles": 122,
+      "notes": 147,
+      "images": [],
+      "firstPage": 129,
+      "lastPage": 163
+    },
+    {
+      "id": "formazione-intellettuale",
+      "title": "Direttorio di Formazione Intellettuale",
+      "short": "Formazione Intellettuale",
+      "edition": "2015",
+      "source": "Direttori Vol. 1.pdf",
+      "pdf": "sources/direttori-vol-1.pdf",
+      "words": 9585,
+      "articles": 91,
+      "notes": 101,
+      "images": [],
+      "firstPage": 167,
+      "lastPage": 199
+    },
+    {
+      "id": "oratorio",
+      "title": "Direttorio di Oratorio",
+      "short": "Oratorio",
+      "edition": "2015",
+      "source": "Direttori Vol. 1.pdf",
+      "pdf": "sources/direttori-vol-1.pdf",
+      "words": 13040,
+      "articles": 62,
+      "notes": 106,
+      "images": [],
+      "firstPage": 203,
+      "lastPage": 247
+    },
+    {
+      "id": "esercizi-spirituali",
+      "title": "Direttorio degli Esercizi Spirituali",
+      "short": "Esercizi Spirituali",
+      "edition": "2015",
+      "source": "Direttori Vol. 1.pdf",
+      "pdf": "sources/direttori-vol-1.pdf",
+      "words": 37699,
+      "articles": 172,
+      "notes": 79,
+      "images": [],
+      "firstPage": 251,
+      "lastPage": 381
+    },
+    {
+      "id": "vocazioni",
+      "title": "Direttorio delle Vocazioni",
+      "short": "Vocazioni",
+      "edition": "2016",
+      "source": "Direttori Vol. 2.pdf",
+      "pdf": "sources/direttori-vol-2.pdf",
+      "words": 11054,
+      "articles": 95,
+      "notes": 108,
+      "images": [],
+      "firstPage": 13,
+      "lastPage": 52
+    },
+    {
+      "id": "vita-fraterna",
+      "title": "Direttorio di Vita Fraterna in comune",
+      "short": "Vita Fraterna in comune",
+      "edition": "2016",
+      "source": "Direttori Vol. 2.pdf",
+      "pdf": "sources/direttori-vol-2.pdf",
+      "words": 9020,
+      "articles": 94,
+      "notes": 57,
+      "images": [],
+      "firstPage": 57,
+      "lastPage": 93
+    },
+    {
+      "id": "seminari-maggiori",
+      "title": "Direttorio di Seminari Maggiori",
+      "short": "Seminari Maggiori",
+      "edition": "2016",
+      "source": "Direttori Vol. 2.pdf",
+      "pdf": "sources/direttori-vol-2.pdf",
+      "words": 29363,
+      "articles": 451,
+      "notes": 669,
+      "images": [],
+      "firstPage": 97,
+      "lastPage": 229
+    },
+    {
+      "id": "noviziato",
+      "title": "Direttorio di Noviziato",
+      "short": "Noviziato",
+      "edition": "2016",
+      "source": "Direttori Vol. 2.pdf",
+      "pdf": "sources/direttori-vol-2.pdf",
+      "words": 14843,
+      "articles": 209,
+      "notes": 88,
+      "images": [],
+      "firstPage": 233,
+      "lastPage": 288
+    },
+    {
+      "id": "direzione-spirituale",
+      "title": "Direttorio di Direzione Spirituale",
+      "short": "Direzione Spirituale",
+      "edition": "2016",
+      "source": "Direttori Vol. 2.pdf",
+      "pdf": "sources/direttori-vol-2.pdf",
+      "words": 7127,
+      "articles": 80,
+      "notes": 30,
+      "images": [],
+      "firstPage": 293,
+      "lastPage": 320
+    },
+    {
+      "id": "catechesi",
+      "title": "Direttorio di Catechesi",
+      "short": "Catechesi",
+      "edition": "Vol. III",
+      "source": "Direttori Vol. 3.pdf",
+      "pdf": "sources/direttori-vol-3.pdf",
+      "words": 19592,
+      "articles": 92,
+      "notes": 95,
+      "images": [],
+      "firstPage": 17,
+      "lastPage": 112
+    },
+    {
+      "id": "missioni-popolari",
+      "title": "Direttorio di Missioni Popolari",
+      "short": "Missioni Popolari",
+      "edition": "Vol. III",
+      "source": "Direttori Vol. 3.pdf",
+      "pdf": "sources/direttori-vol-3.pdf",
+      "words": 31216,
+      "articles": 221,
+      "notes": 180,
+      "images": [],
+      "firstPage": 115,
+      "lastPage": 254
+    },
+    {
+      "id": "predicazione",
+      "title": "Direttorio di predicazione della Parola di Dio",
+      "short": "predicazione della Parola di Dio",
+      "edition": "Vol. III",
+      "source": "Direttori Vol. 3.pdf",
+      "pdf": "sources/direttori-vol-3.pdf",
+      "words": 14085,
+      "articles": 134,
+      "notes": 118,
+      "images": [],
+      "firstPage": 257,
+      "lastPage": 318
+    },
+    {
+      "id": "vita-contemplativa",
+      "title": "Direttorio di Vita Contemplativa",
+      "short": "Vita Contemplativa",
+      "edition": "Vol. III",
+      "source": "Direttori Vol. 3.pdf",
+      "pdf": "sources/direttori-vol-3.pdf",
+      "words": 13410,
+      "articles": 225,
+      "notes": 196,
+      "images": [],
+      "firstPage": 323,
+      "lastPage": 393
+    },
+    {
+      "id": "evangelizzazione-cultura",
+      "title": "Direttorio di Evangelizzazione della cultura",
+      "short": "Evangelizzazione della cultura",
+      "edition": "Vol. III",
+      "source": "Direttori Vol. 3.pdf",
+      "pdf": "sources/direttori-vol-3.pdf",
+      "words": 28551,
+      "articles": 242,
+      "notes": 188,
+      "images": [],
+      "firstPage": 397,
+      "lastPage": 524
+    }
+  ]
+}
