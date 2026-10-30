@@ -329,3 +329,7 @@ body.in-doc #progress{display:block}
 .doc .footnote-list > .note-continuation { display: block; padding-left: 2.9em; }
 
 .bookmark-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 10px}.bookmark-tools .btn:disabled{opacity:.45;cursor:default}
+
+
+/* Iconos institucionales */
+.brand-mark{width:38px;height:38px;border-radius:8px;background:#5f2828;box-shadow:none;overflow:hidden}.brand-mark img{display:block;width:100%;height:100%;object-fit:contain;border-radius:inherit}
