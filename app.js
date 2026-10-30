@@ -9,7 +9,7 @@ const fold = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const store = {
   get(k, d) { try { const v = localStorage.getItem('ive-it.' + k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
-  set(k, v) { try { localStorage.setItem('ive-it.' + k, JSON.stringify(v)); } catch (e) {} }
+  set(k, v) { try { localStorage.setItem('ive-it.' + k, JSON.stringify(v)); return true; } catch (e) { return false; } }
 };
 
 const HUES = { fund: '#8E1B2B', vida: '#2F5D7C', form: '#3D6B48', apos: '#9A6B1F', otros: '#6B5B73' };
@@ -254,8 +254,10 @@ function onScroll() {
       let act = null;
       for (const h of heads) { if (h.compareDocumentPosition(cur) & Node.DOCUMENT_POSITION_FOLLOWING || h === cur) act = h; else break; }
       $$('.toc-list a.active').forEach(a => a.classList.remove('active'));
-      if (act) $$(`.toc-list a[data-a="${act.id}"]`).forEach(a => { a.classList.add('active'); });
-      const sideA = act && $(`#side-toc a[data-a="${act.id}"]`);
+      const docData = DOCS.get(view.dataset.doc);
+      const activeId = act && (((docData && docData.tocAliases) || {})[act.id] || act.id);
+      if (activeId) $$(`.toc-list a[data-a="${activeId}"]`).forEach(a => { a.classList.add('active'); });
+      const sideA = activeId && $(`#side-toc a[data-a="${activeId}"]`);
       if (sideA) { const s = $('.reader-side'); const r = sideA.getBoundingClientRect(), sr = s.getBoundingClientRect(); if (r.top < sr.top + 40 || r.bottom > sr.bottom - 40) s.scrollTop += r.top - sr.top - sr.height / 3; }
       clearTimeout(saveT);
       saveT = setTimeout(() => {
@@ -361,7 +363,7 @@ function toggleMark(meta, p) {
 }
 function markSaved() {
   const id = view.dataset.doc; if (!id) return;
-  $$('#doc p.saved').forEach(p => p.classList.remove('saved'));
+  $$('#doc .saved').forEach(p => p.classList.remove('saved'));
   for (const m of marks) if (m.d === id) { const el = document.getElementById(m.a); if (el) el.classList.add('saved'); }
 }
 function showMarks() {
@@ -369,6 +371,12 @@ function showMarks() {
   document.title = 'Segnalibri · ' + LIB.title;
   view.innerHTML = `<div class="page">
     <div class="page-head"><h1>Segnalibri</h1><span class="muted">${marks.length || ''}</span></div>
+    <div class="bookmark-tools">
+      <button class="btn" id="marks-export"${marks.length ? '' : ' disabled'}>Esporta backup</button>
+      <button class="btn ghost" id="marks-import">Importa backup</button>
+      <input type="file" id="marks-file" accept="application/json,.json" hidden aria-label="Seleziona un backup dei segnalibri">
+    </div>
+    <p class="muted small">Salva una copia dei segnalibri o trasferiscili su un altro dispositivo. L’importazione mantiene quelli già presenti.</p>
     ${marks.length ? `<ul class="results">${marks.map((m, i) => { const d = META.get(m.d); if (!d) return ''; return `
       <li class="mark-item"><a class="result" style="--hue:${d.hue}" href="#/d/${m.d}/${m.a}">
         <div class="r-top"><span class="r-doc">${esc(d.title)}</span>${m.n ? `<span class="r-n">${esc(m.n)}</span>` : ''}</div>
@@ -378,7 +386,54 @@ function showMarks() {
   </div>`;
   view.onclick = null;
   $$('.rm', view).forEach(b => b.addEventListener('click', e => { e.preventDefault(); marks.splice(+b.dataset.i, 1); store.set('marks', marks); showMarks(); }));
+  $('#marks-export').onclick = exportBookmarks;
+  $('#marks-import').onclick = () => $('#marks-file').click();
+  $('#marks-file').onchange = async e => {
+    const file = e.target.files[0]; if (!file) return;
+    try {
+      if (file.size > 5 * 1024 * 1024) throw new Error('Il file è troppo grande (massimo 5 MB).');
+      const rows = IVEData.parseBookmarkBackup(JSON.parse(await file.text()));
+      const result = IVEData.mergeBookmarks(marks, rows, m => {
+        const meta = META.get(m.d);
+        return !!meta && meta.paragraphs.includes(m.a.slice(1));
+      });
+      // Rebuild snippets from the library, rather than trusting imported text.
+      const added = result.bookmarks.slice(0, result.added);
+      const documents = new Map();
+      for (const id of new Set(added.map(m => m.d))) {
+        const data = await loadDoc(id);
+        documents.set(id, new DOMParser().parseFromString(data.html, 'text/html'));
+      }
+      for (const mark of added) {
+        const dom = documents.get(mark.d), paragraph = dom.getElementById(mark.a);
+        if (!paragraph) throw new Error('Un paragrafo del backup non è disponibile. Nessun segnalibro è stato modificato.');
+        const unit = paragraph.dataset.u;
+        const nodes = [...dom.querySelectorAll('[data-u]')].filter(n => n.dataset.u === unit);
+        const text = nodes.map(n => { const copy = n.cloneNode(true); copy.querySelectorAll('.num,sup').forEach(x => x.remove()); return copy.textContent.trim(); }).join('\n');
+        mark.t = text.length > 240 ? text.slice(0, 240) + '…' : text;
+      }
+      if (!result.added) {
+        toast(result.skipped ? 'Nessun nuovo segnalibro valido da importare.' : 'I segnalibri del backup sono già presenti.');
+        return;
+      }
+      if (!store.set('marks', result.bookmarks)) throw new Error('Impossibile salvare i segnalibri su questo dispositivo.');
+      marks = result.bookmarks;
+      markSaved();
+      if (currentKey === 'segnalibri') showMarks();
+      toast(`${result.added} ${result.added === 1 ? 'segnalibro importato' : 'segnalibri importati'}${result.duplicates ? ` · ${result.duplicates} duplicati ignorati` : ''}${result.skipped ? ` · ${result.skipped} non validi ignorati` : ''}`);
+    } catch (err) { toast(err instanceof SyntaxError ? 'Il file non è un backup JSON valido.' : (err.message || 'Impossibile importare il backup.')); }
+    finally { e.target.value = ''; }
+  };
   window.scrollTo(0, 0);
+}
+function exportBookmarks() {
+  const backup = { format: 'ive-it-bookmarks', version: 1, exportedAt: new Date().toISOString(), bookmarks: marks };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' }));
+  const link = document.createElement('a'); link.href = url;
+  link.download = 'segnalibri-ive-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.append(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('Backup dei segnalibri esportato');
 }
 
 /* ------------------------------------------------------------ search */
@@ -452,10 +507,11 @@ function filterDocs() {
 
 const ALIASES = { c: 'costituzioni', const: 'costituzioni', cost: 'costituzioni', cons: 'costituzioni', costituzioni: 'costituzioni', de: 'spiritualita', desp: 'spiritualita', 'dir esp': 'spiritualita', spiritualita: 'spiritualita' };
 function detectJump(q) {
-  const m = q.trim().match(/^(.*?)[\s,]*(?:n\.?\s*º?|nº|n°|no\.|#)?\s*\[?(\d{1,3})\]?\s*$/i);
+  const m = q.trim().match(/^(.*?)[\s,]*(?:n\.?\s*º?|nº|n°|no\.|#)?\s*\[?(\d{1,4}[a-z]?)\]?\s*$/i);
   if (!m) return null;
   const name = fold(m[1]).replace(/\./g, ' ').replace(/\s+/g, ' ').trim();
-  const n = m[2];
+  const n = IVEData.parseParagraphReference(m[2]);
+  if (!n) return null;
   let id = null;
   if (!name) { const fd = filterDocs(); if (fd && fd.length === 1) id = fd[0]; else return null; }
   else if (ALIASES[name]) id = ALIASES[name];
@@ -466,7 +522,7 @@ function detectJump(q) {
          LIB.order.find(i => fold(META.get(i).title).includes(nm));
   }
   const d = id && META.get(id);
-  if (!d || !d.articles || +n > d.articles + 20) return null;
+  if (!d || !d.paragraphs.includes(n)) return null;
   return { id, n, d };
 }
 
@@ -530,10 +586,16 @@ function setupChrome() {
   $('#toc-list').addEventListener('click', e => { if (e.target.closest('a')) closeAll(); });
   $('#goto-form').addEventListener('submit', e => {
     e.preventDefault();
-    const n = $('#goto-n').value.trim(); if (!n) return;
-    closeAll(); $('#goto-n').value = '';
-    go(`#/d/${view.dataset.doc}/n${parseInt(n, 10)}`);
+    const input = $('#goto-n');
+    const n = IVEData.parseParagraphReference(input.value);
+    const meta = META.get(view.dataset.doc);
+    if (!n || !meta || !meta.paragraphs.includes(n)) {
+      input.setCustomValidity('Inserisci un numero presente nel documento, per esempio 2a o 214a.'); input.reportValidity(); return;
+    }
+    input.setCustomValidity(''); closeAll(); input.value = '';
+    go(`#/d/${view.dataset.doc}/n${n}`);
   });
+  $('#goto-n').addEventListener('input', e => e.target.setCustomValidity(''));
   document.addEventListener('click', e => { if (!e.target.closest('#pop') && !e.target.closest('sup.fn') && !e.target.closest('.num')) closePop(); });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') { closeAll(); return; }

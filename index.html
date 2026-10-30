@@ -75,7 +75,7 @@
   </div>
   <form class="goto" id="goto-form" autocomplete="off">
     <label for="goto-n">Vai al numero</label>
-    <input id="goto-n" inputmode="numeric" pattern="[0-9]*" placeholder="n.">
+    <input id="goto-n" inputmode="text" autocapitalize="none" spellcheck="false" placeholder="es. 214a">
     <button type="submit" class="btn small">Vai</button>
   </form>
   <ol class="toc-list" id="toc-list"></ol>
@@ -131,6 +131,7 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="app-data.js" defer></script>
 <script src="app.js" defer></script>
 </body>
 </html>

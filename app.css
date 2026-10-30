@@ -327,3 +327,5 @@ body.in-doc #progress{display:block}
 .note-number { font-family: var(--sans); color: var(--accent); font-size: .85em; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; padding-top: .16em; }
 .note-text, .footnote-content { font-family: var(--read-font); font-weight: 400; overflow-wrap: anywhere; }
 .doc .footnote-list > .note-continuation { display: block; padding-left: 2.9em; }
+
+.bookmark-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 10px}.bookmark-tools .btn:disabled{opacity:.45;cursor:default}
