@@ -1,6 +1,6 @@
 /* Service worker — offline cache + versioned updates.
    VERSION and ASSETS are rewritten by tools/build.py on every build. */
-const VERSION = 'icons-e09673e18d57';
+const VERSION = 'icons-da4a7e526e8a';
 const ASSETS = [
  "./",
  "app-data.js",
